@@ -30,8 +30,7 @@ namespace GuessingGameTemplate4U
             int guess = Convert.ToInt16(inputBox.Text);
 
             //TODO add guess to List of guesses on Form1
-
-
+            Form1.guessUser.Add(guess);
             if (guess < rand)
             {
                 outputLabel.Text = "Too Low!";
@@ -46,7 +45,11 @@ namespace GuessingGameTemplate4U
                 Refresh();
                 Thread.Sleep(1000);
 
-                //TODO close this screen and open a Results Screen (you need to create this)
+                Form ms = this.FindForm();
+                ms.Controls.Remove(this);
+
+                endScreen es = new endScreen();            
+                ms.Controls.Add(es);
 
             }
 
